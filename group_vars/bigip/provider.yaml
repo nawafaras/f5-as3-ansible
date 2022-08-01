@@ -1,0 +1,7 @@
+---
+provider:
+  password: "{{ ansible_httpapi_password }}"
+  server: "{{ ansible_host }}"
+  user: "{{ ansible_user }}"
+  server_port: "{{ ansible_httpapi_port }}"
+  validate_certs: no

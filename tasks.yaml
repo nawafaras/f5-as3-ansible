@@ -1,0 +1,13 @@
+- name: CREATE AS3 JSON BODY for {{item.TENANT}}
+  set_fact:
+    waf_policy: "{{ lookup('template', './templates/waf.j2') | b64encode }}"
+# - name: check as3 config
+#   set_fact:
+#     as3_config: "{{ lookup('template', './templates/cwp2.j2')}}"
+# - debug:
+#     msg: "{{ as3_config }}"
+- name: Deploy {{item.TENANT}} application
+  bigip_appsvcs_extension:
+    content: "{{ lookup('template', './templates/cwp2.j2') }}"
+    state: present
+    provider: "{{ provider }}"

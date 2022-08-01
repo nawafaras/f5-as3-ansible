@@ -1,0 +1,30 @@
+{
+    "policy": {
+        "template" : {
+            "name" : "POLICY_TEMPLATE_FUNDAMENTAL"
+         },
+        "enforcementMode": "blocking",
+        "server-technologies": [
+            {
+                "serverTechnologyName": "Nginx"
+            },
+            {
+                "serverTechnologyName": "MySQL"
+            }
+        ],
+        "signature-settings": {
+            "signatureStaging": false
+        },
+        "policy-builder" : {
+            "learningMode" : "manual"
+         },
+        "response-pages" : [
+            {
+               "responseActionType" : "custom",
+               "responseContent" : "<html><head><title>Request Rejected</title></head><body>Sorry, request is rejected. We're currently Testing the custom blocking page. Please supply the following information:<br><br>Support ID: <%TS.request.ID()%><br><br><a href='javascript:history.back();'>[Back Now]</a></body></html>",
+               "responseHeader" : "HTTP/1.1 200 OK\r\nCache-Control: no-cache\r\nPragma: no-cache\r\nConnection: close",
+               "responsePageType" : "default"
+            }
+         ]
+    }
+}
